@@ -39,8 +39,8 @@ We test the code on PyTorch 1.9.1 + CUDA 11.8 + cuDNN 8.9.6.
 
 1. Create a new conda environment
 ```
-conda create -n RWKV-Derainer python=3.8
-conda activate RWKV-Derainer 
+conda create -n AncRestore python=3.8
+conda activate AncRestore
 ```
 
 2. Install dependencies
