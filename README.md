@@ -20,11 +20,10 @@ Ancient books preserve invaluable cultural heritage, yet their images often suff
 
 # 🔥 Dataset pipeline
 
-<!--![Dataset_pipeline](Data_pipeline.jpg)-->
 
 # ✨Network  Architecture
 
-
+[![AncRestore](./Network.svg)](./Network.pdf)
 <!--![RWKV_Derainer](RWKV_Derainer.jpg)-->
 
 ## News
