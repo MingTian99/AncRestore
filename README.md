@@ -19,11 +19,11 @@ Ancient books preserve invaluable cultural heritage, yet their images often suff
 > 
 
 # 🔥 Dataset pipeline
-
+![AncRestore](Figures/dataset.png)
 
 # ✨Network  Architecture
 
-[![AncRestore](./Network.svg)](./Network.pdf)
+![AncRestore](Figures/network.png)
 <!--![RWKV_Derainer](RWKV_Derainer.jpg)-->
 
 ## News
@@ -32,6 +32,28 @@ Ancient books preserve invaluable cultural heritage, yet their images often suff
 - **Sep 13, 2023:** The basic version is released, including codes, pre-trained models on the Sate 1k dataset, and the used dataset.
 - **Sep 14, 2023:** RICE dataset updated.
   ** Sep 15, 2023:** The [visual results on Sate 1K](https://pan.baidu.com/s/1dToHnHI9GVaHQ3-I6OIbpA?pwd=rs1k) and [real-world dataset RSSD300](https://pan.baidu.com/s/1OZUWj8eo6EmP5Rh8DE1mrA?pwd=8ad5) are updated.-->
+
+## Preparation
+
+## 📥Datasets
+<table>
+<thead>
+  <tr>
+    <th>Dataset</th>
+    <th>AncBench</th>
+    <th>HDR28K</th>
+    <th>HanInpaint</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Baidu Cloud</td>
+    <td> <a href="https://pan.baidu.com/s/1sFnPbg21Xi5G7sSOd0FofA?pwd=r9q7 提取码: r9q7">Download</a> </td>
+    <td align="center"> <a href="https://pan.baidu.com/s/1El0bUnlYeRmcUS2yFwpWYw?pwd=t4ff 提取码: t4ff">Download</a> </td>
+    <td> <a href="https://pan.baidu.com/s/1uP8RkQnrKYjdF7ED6ywkrw?pwd=axhq 提取码: axhq">Download</a> </td>
+  </tr>
+</tbody>
+</table>
 
 ### Install
 
@@ -62,8 +84,8 @@ The final file path should be the same as the following:
 │   ├─ ... (model name)
 │   └─ ... (exp name)
 └─ data
-    ├─ ATID
-    ├─ Realrain_1k_H
+    ├─ HDR28K
+    ├─ AncBench
     │├─ train
     ││  ├─ input
     ││  │  └─ ... (image filename)
@@ -74,3 +96,37 @@ The final file path should be the same as the following:
     └─ ... (dataset name)
 
 ```
+## 🚨 Notes
+
+1. Send e-mail to songtianyu@dlmu.edu.cn if you have critical issues to be addressed.
+2. Please note that there exists the slight gap in the final version due to errors caused by different testing devices and environments. 
+3. Because the synthetic dataset is not realistic enough, the trained models may not work well on real world datasets.
+
+
+<!-- ## 📜 Citation
+
+If you find this work useful, please cite our paper:
+
+```bibtex
+@inproceedings{zhang2026scrwkv,
+  title={SCRWKV: Ultra-Compact Structure-Calibrated Vision-RWKV for Topological Crack Segmentation},
+  author={Zhang, Hanxu and Jia, Chen and Liu, Hui and Cheng, Xu and Shi, Fan and Chen, Shengyong},
+  booktitle={Proceedings of the 43rd International Conference on Machine Learning},
+  year={2026},
+  organization={PMLR}
+}
+``` -->
+
+<!-- ## 👍 Acknowledgment
+
+This code is based on the [DVANet](https://github.com/leoyjTu/DVANet), [VLU-Net](https://github.com/xianggkl/VLU-Net). Thanks for their awesome work. -->
+
+---
+
+## 🙏 Acknowledgements
+
+This work stands on the shoulders of the following open-source projects, and we sincerely thank their authors for making it possible:
+
+* [DVANet](https://github.com/leoyjTu/DVANet)
+* [VLU-Net](https://github.com/xianggkl/VLU-Net)
+---

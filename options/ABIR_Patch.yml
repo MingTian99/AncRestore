@@ -1,0 +1,118 @@
+name: ABIR-Patch-DVANet-base
+model_type: ImageRestorationModel
+scale: 1
+num_gpu: 2
+manual_seed: 42
+
+datasets:
+  train:
+    name: ABIRPatchTrain
+    type: PairedImageDataset
+    dataroot_gt: /root/rivermind-data/ABIR_Bench/Dataset-Patch/train/target
+    dataroot_lq: /root/rivermind-data/ABIR_Bench/Dataset-Patch/train/input
+    filename_tmpl: '{}'
+    io_backend:
+      type: disk
+
+    gt_size: 256
+    use_flip: true
+    use_rot: true
+
+    use_shuffle: true
+    num_worker_per_gpu: 8
+    batch_size_per_gpu: 4
+    dataset_enlarge_ratio: 1
+    prefetch_mode: ~
+
+  val:
+    name: ABIRPatchTest
+    type: PairedImageDataset
+    dataroot_gt: /root/rivermind-data/ABIR_Bench/Dataset-Patch/test/target
+    dataroot_lq: /root/rivermind-data/ABIR_Bench/Dataset-Patch/test/input
+    io_backend:
+      type: disk
+
+network_g:
+  type: DVANet
+  inp_channels: 3
+  out_channels: 3
+  dim: 32
+  num_blocks: [4, 6, 6, 8]
+  num_refinement_blocks: 4
+  heads: [1, 2, 4, 8]
+  ffn_expansion_factor: 2.66
+  bias: false
+  LayerNorm_type: WithBias
+  degradation_dim: 512
+  drb_mid_channels: 64
+  local_token_grid: 2
+  num_degradation_tokens: 16
+  dino_extract_ids: [5, 11, 17, 23]
+  dino_input_size: 512
+  use_dir_routing: false
+  num_dino_experts: 4
+  dir_routing_type: er_rr
+  dir_gate_init: 0.0
+  dir_temperature: 1.0
+  use_damage_localization: false
+  use_damage_refinement: false
+  damage_refinement_gate_init: 0.0
+
+path:
+  pretrain_network_g:
+  strict_load_g:
+  resume_state:
+
+train:
+  optim_g:
+    type: AdamW
+    lr: !!float 2e-4
+    weight_decay: !!float 1e-4
+    betas: [0.9, 0.999]
+
+  scheduler:
+    type: TrueCosineAnnealingLR
+    T_max: 100000
+    eta_min: !!float 1e-7
+
+  total_iter: 100000
+  warmup_iter: 5000
+
+  pixel_opt:
+    type: L1Loss
+    loss_weight: 1.0
+    reduction: mean
+
+  fft_loss_opt:
+    type: FFTLoss
+    loss_weight: 0.1
+    reduction: mean
+
+val:
+  val_freq: 5000
+  max_images: 100
+  empty_cache: false
+  save_img: false
+
+  metrics:
+    psnr:
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: false
+    ssim:
+      type: calculate_ssim
+      crop_border: 0
+      test_y_channel: false
+
+logger:
+  print_freq: 100
+  save_checkpoint_freq: 5000
+  use_tb_logger: true
+  wandb:
+    project: ~
+    resume_id: ~
+
+dist_params:
+  backend: nccl
+  port: 29500
+  timeout: 12h
