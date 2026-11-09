@@ -7,7 +7,7 @@
 > 
 >  [Shumin Fan](https://scholar.google.com.hk/citations?user=WZv2NgoAAAAJ&hl=zh-CN), [Tianyu Song](https://scholar.google.com/citations?user=wA3Op6cAAAAJ&hl=zh-CN), [Hongming Chen](https://scholar.google.com/citations?user=2DBuqfkAAAAJ), Xiaodong Zhou, [Xiang Chen](https://cschenxiang.github.io/)
 >
-> Dalian Maritime University, People's Public Security University of China and Nanjing University of Science and Technology
+> Dalian Maritime University, Shanghai Police College and Nanjing University of Science and Technology
 >
 > <!--Primary contact: Tianyu Song(songtienyu@163.com)-->
 >
